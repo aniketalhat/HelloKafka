@@ -53,7 +53,8 @@ public class HelloKafkaConsumer extends  Thread {
 
     }
 
-    private static void printMessages(ByteBufferMessageSet messageSet) throws UnsupportedEncodingException {
+    @SuppressWarnings("unused")
+	private static void printMessages(ByteBufferMessageSet messageSet) throws UnsupportedEncodingException {
         for(MessageAndOffset messageAndOffset: messageSet) {
             ByteBuffer payload = messageAndOffset.message().payload();
             byte[] bytes = new byte[payload.limit()];
