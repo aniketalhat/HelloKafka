@@ -15,5 +15,6 @@
 	<classpathentry kind="var" path="M2_REPO/com/101tec/zkclient/0.3/zkclient-0.3.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.5.6/slf4j-log4j12-1.5.6.jar"/>
 	<classpathentry kind="lib" path="/home/aniket/Downloads/twitter4j-4.0.2/lib/twitter4j-core-4.0.2.jar"/>
+	<classpathentry kind="lib" path="/home/aniket/Downloads/twitter4j-4.0.2/lib/twitter4j-stream-4.0.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
