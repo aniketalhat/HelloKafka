@@ -1,15 +1,10 @@
 package com.spnotes.kafka;
 
-import kafka.api.FetchRequest;
-import kafka.api.FetchRequestBuilder;
-import kafka.api.FetchResponse;
 import kafka.consumer.Consumer;
 import kafka.consumer.ConsumerConfig;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
-import kafka.javaapi.consumer.SimpleConsumer;
-
 import java.nio.ByteBuffer;
 import java.util.*;
 
@@ -23,7 +18,7 @@ import java.io.UnsupportedEncodingException;
  */
 public class HelloKafkaConsumer extends  Thread {
     final static String clientId = "SimpleConsumerDemoClient";
-    final static String TOPIC = "pythontest";
+    final static String TOPIC = "twitterStream";
     ConsumerConnector consumerConnector;
 
 

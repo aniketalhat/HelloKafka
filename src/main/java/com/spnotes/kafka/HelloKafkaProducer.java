@@ -45,7 +45,7 @@ public class HelloKafkaProducer {
         SimpleDateFormat sdf = new SimpleDateFormat();
         KeyedMessage<String, String> message =new KeyedMessage<String, String>(TOPIC,"Test message from java program " + sdf.format(new Date()));
         
-        showUser();
+        //showUser();
         producer.send(message);
         producer.close();
     }
