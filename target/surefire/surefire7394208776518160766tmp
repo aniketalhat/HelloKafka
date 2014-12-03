@@ -1,0 +1,5 @@
+#surefire
+#Mon Dec 01 14:56:50 JST 2014
+user.dir=/home/aniket/HelloKafka
+localRepository=/home/aniket/.m2/repository
+basedir=/home/aniket/HelloKafka
