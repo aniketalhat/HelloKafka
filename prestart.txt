@@ -1,0 +1,3 @@
+Turn On zookeeper for kafka from outside
+Turn On kafka from outside
+
