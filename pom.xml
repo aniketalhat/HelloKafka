@@ -8,6 +8,15 @@
     <artifactId>HelloKafka</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <repositories>
+        <!-- Repository where we can find the storm dependencies  -->
+        <repository>
+            <id>clojars.org</id>
+            <url>http://clojars.org/repo</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -41,6 +50,12 @@
            <artifactId>twitter4j-core</artifactId>
            <version>[4.0,)</version>
        	</dependency>
-       	
+        <!-- Storm Dependency -->
+        <dependency>
+            <groupId>storm</groupId>
+            <artifactId>storm</artifactId>
+            <version>0.9.0.1</version>
+        </dependency>
+
     </dependencies>
 </project>
