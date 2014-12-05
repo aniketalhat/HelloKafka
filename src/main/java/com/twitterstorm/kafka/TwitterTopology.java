@@ -13,11 +13,11 @@ public class TwitterTopology {
         try {
             TopologyBuilder builder = new TopologyBuilder();
             builder.setSpout("spout-reader", new TwitterSpout());
-            builder.setBolt("bolt-reader", new TwitterBolt(), 2).shuffleGrouping("spout-reader");
+            builder.setBolt("bolt-reader", new TwitterBolt()).shuffleGrouping("spout-reader");
 
             //Configuration
             Config conf = new Config();
-            conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 2);
+            conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);
             conf.setDebug(false);
 
             LocalCluster lc = new LocalCluster();
