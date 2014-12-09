@@ -9,6 +9,7 @@ import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
 import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * Created by aniketalhat on 12/4/14.
@@ -16,7 +17,7 @@ import java.util.Map;
 public class TwitterBolt extends BaseRichBolt {
 
     private OutputCollector outputCollector;
-
+    private StringTokenizer strTok;
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         //System.out.println("In bolt prepare()");
@@ -26,14 +27,25 @@ public class TwitterBolt extends BaseRichBolt {
     @Override
     public void execute(Tuple tuple) {
         //System.out.println("In bolt execute() method");
-        String string = tuple.getString(0);
-        System.out.println("Tweet: " + string);
-        outputCollector.emit(new Values(string));
+        /*String tweet = tuple.getString(0);
+        strTok = new StringTokenizer(tweet, " ");
+
+        while(strTok.hasMoreTokens()) {
+            String word = strTok.nextToken();
+
+            if(word.contains("(")) {
+                outputCollector.emit("country", new Values(word));
+                System.out.println("Tweet Country: " + word);
+            }
+        }*/
+        String country = tuple.getString(0);
+        outputCollector.emit(new Values(country));
+        //System.out.println(country);
     }
 
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-        outputFieldsDeclarer.declare(new Fields("declare-tweet"));
+        outputFieldsDeclarer.declare(new Fields("tweets"));
     }
 }

@@ -40,7 +40,7 @@ public class TwitterSpout extends BaseRichSpout {
 	static Properties kafkaConsumerProperties = null;
 	
 	//Twitter4J
-	static final String TOPIC = "twitterStream";
+	static final String TOPIC = "twitterStreamCountryNames";
 	static TwitterStream twitterStream = null;
 	static ConfigurationBuilder cb = null;
 	static Properties authProperties = null;
@@ -88,9 +88,13 @@ public class TwitterSpout extends BaseRichSpout {
 				StatusListener listener = new StatusListener() {
 					@Override
 					public void onStatus(Status status) {
-						String tweet = new String("@" + status.getUser().getScreenName() + " - " + status.getText());
-						message = new KeyedMessage<String, String>(TOPIC,  tweet);
-						producer.send(message);
+						Place place = status.getPlace();
+						if(place != null) {
+							//String tweet = new String("@" + status.getUser().getScreenName() + " ("+ place.getCountry() + ") " + " - " + status.getText());
+							String country = new String(place.getCountry());
+							message = new KeyedMessage<String, String>(TOPIC, country);
+							producer.send(message);
+						}
 
 					}
 					@Override
@@ -154,7 +158,6 @@ public class TwitterSpout extends BaseRichSpout {
 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-
-		declarer.declare(new Fields("user-tweet"));
+		declarer.declare(new Fields("tweets"));
 	}
 }
