@@ -43,9 +43,6 @@ public class KafkaFeeder
         }catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     public KafkaFeeder() {
