@@ -1,5 +1,7 @@
 package com.spnotes.kafka;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
 import kafka.consumer.Consumer;
 import kafka.consumer.ConsumerConfig;
 import kafka.consumer.ConsumerIterator;
@@ -7,8 +9,9 @@ import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
 import kafka.javaapi.message.ByteBufferMessageSet;
 import kafka.message.MessageAndOffset;
+import twitter4j.Status;
 
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +24,7 @@ import java.util.Properties;
  */
 public class HelloKafkaConsumer extends  Thread {
     final static String clientId = "SimpleConsumerDemoClient";
-    final static String TOPIC = "twitterStream";
+    final static String TOPIC = "twitterFeed";
     ConsumerConnector consumerConnector;
 
 
@@ -41,14 +44,31 @@ public class HelloKafkaConsumer extends  Thread {
 
     @Override
     public void run() {
-        Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
-        topicCountMap.put(TOPIC, new Integer(1));
-        Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumerConnector.createMessageStreams(topicCountMap);
-        KafkaStream<byte[], byte[]> stream =  consumerMap.get(TOPIC).get(0);
-        ConsumerIterator<byte[], byte[]> it = stream.iterator();
-        while(it.hasNext())
-            System.out.println(new String(it.next().message()));
+        Map<String, Integer> topicCount = new HashMap<String, Integer>();
+        topicCount.put(TOPIC, new Integer(1));
+        Map<String, List<KafkaStream<byte[], byte[]>>> consumerStreams =
+                consumerConnector.createMessageStreams(topicCount);
+        List<KafkaStream<byte[], byte[]>> streams = consumerStreams.get(TOPIC);
+        for (final KafkaStream stream : streams) {
+            ConsumerIterator<byte[], byte[]> consumerIte = stream.iterator();
 
+            ObjectInputStream ins;
+            ByteArrayInputStream bi;
+            while (consumerIte.hasNext()) {
+                try {
+                    byte [] data = consumerIte.next().message();
+                    bi = new ByteArrayInputStream(data);
+                    ins = new ObjectInputStream(bi);
+                    Status status = (Status) ins.readObject();
+                    System.out.println("Retrieved: " + status.getText());
+                    ins.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
     }
 
     @SuppressWarnings("unused")
