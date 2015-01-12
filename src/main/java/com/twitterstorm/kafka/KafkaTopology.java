@@ -22,8 +22,8 @@ public class KafkaTopology {
             // Second argument is the topic name
             // Third argument is the ZooKeeper root for Kafka
             // Fourth argument is consumer group id
-            SpoutConfig kafkaConfig = new SpoutConfig(zkHosts, "twitterStream", "", "id7");
-            kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
+            SpoutConfig kafkaConfig = new SpoutConfig(zkHosts, "twitterFeed", "", "test-group");
+            //kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
             kafkaConfig.forceFromStart = true;
 
             TopologyBuilder topologyBuilder = new TopologyBuilder();
@@ -39,7 +39,7 @@ public class KafkaTopology {
 
                 // Wait for some time before exiting
                 System.out.println("Waiting to consume from kafka");
-                Thread.sleep(10000);
+                //Thread.sleep(10000);
 
             // kill the KafkaTopology
             //localCluster.killTopology("tweetfeedprint");

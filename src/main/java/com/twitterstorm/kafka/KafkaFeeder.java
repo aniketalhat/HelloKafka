@@ -29,7 +29,6 @@ public class KafkaFeeder
     ProducerConfig producerConfig;
     Producer<String, byte[]> producer;
     KeyedMessage<String, byte[]> keyedMessage;
-    Kryo kryo;
 
 
     ByteArrayOutputStream bs;
