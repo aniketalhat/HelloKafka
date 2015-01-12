@@ -1,0 +1,5 @@
+Turn On zookeeper for kafka from outside
+Turn On kafka from outside
+
+Add storm-kafka-spout
+mvn install:install-file -Dfile=${basedir}/src/main/resources/storm-kafka-0.10.0-SNAPSHOT.jar -DgroupId=org.apache.storm -DartifactId=storm-kafka -Dversion=0.10.0.SNAPSHOT -Dpackaging=jar

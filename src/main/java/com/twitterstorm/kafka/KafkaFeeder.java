@@ -70,7 +70,7 @@ public class KafkaFeeder
 
 
         twitterAuthProperties = new Properties();
-        fileInputStream = new FileInputStream(new File("/Users/aniketalhat/Projects/HelloKafka/src/main/src/main/resources/config.properties"));
+        fileInputStream = new FileInputStream(new File("/Users/aniketalhat/Projects/HelloKafka/src/main/resources/config.properties"));
         twitterAuthProperties.load(fileInputStream);
 
         cb.setDebugEnabled(true)

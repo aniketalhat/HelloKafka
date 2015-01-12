@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="storm-kafka-0.10.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../apache-storm-0.10.0-SNAPSHOT/external/storm-kafka/storm-kafka-0.10.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
