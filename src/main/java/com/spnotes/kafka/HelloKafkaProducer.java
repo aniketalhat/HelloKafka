@@ -27,7 +27,7 @@ public class HelloKafkaProducer {
         ProducerConfig producerConfig = new ProducerConfig(properties);
       
         //Disable log4j warnings.
-        Logger.getRootLogger().setLevel(Level.OFF);	
+        //Logger.getRootLogger().setLevel(Level.OFF);
         
         kafka.javaapi.producer.Producer<String,String> producer = new kafka.javaapi.producer.Producer<String, String>(producerConfig);
         SimpleDateFormat sdf = new SimpleDateFormat();

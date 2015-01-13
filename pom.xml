@@ -33,7 +33,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.twitterstorm.kafka.KafkaTopology</mainClass>
+                            <mainClass></mainClass> <!--com.twitterstorm.kafka.KafkaTopology-->
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -51,6 +51,23 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <outputDirectory>target/classes</outputDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
     </build>
 
     <repositories>
